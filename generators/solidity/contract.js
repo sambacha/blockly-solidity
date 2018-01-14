@@ -51,7 +51,7 @@ Blockly.Solidity['contract_state_get'] = function(block) {
     return '';
   }
 
-  return ['this.' + Blockly.Solidity.getVariableName(variable), Blockly.Solidity.ORDER_ATOMIC];
+  return [Blockly.Solidity.getVariableName(variable), Blockly.Solidity.ORDER_ATOMIC];
 };
 
 Blockly.Solidity['contract_state_set'] = function(block) {
@@ -65,5 +65,5 @@ Blockly.Solidity['contract_state_set'] = function(block) {
     return '';
   }
 
-  return 'this.' + Blockly.Solidity.getVariableName(variable) + ' = ' + argument0 + ';\n';
+  return Blockly.Solidity.getVariableName(variable) + ' = ' + argument0 + ';\n';
 };

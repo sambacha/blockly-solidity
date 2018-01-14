@@ -126,16 +126,16 @@ Blockly.Solidity.init = function(workspace) {
     Blockly.Solidity.variableDB_.reset();
   }
 
-  var defvars = [];
-  var variables = workspace.getAllVariables();
-  if (variables.length) {
-    for (var i = 0; i < variables.length; i++) {
-      defvars[i] = Blockly.Solidity.variableDB_.getName(variables[i].name,
-          Blockly.Variables.NAME_TYPE);
-    }
-    Blockly.Solidity.definitions_['variables'] =
-        'int ' + defvars.join(', ') + ';';
-  }
+  // var defvars = [];
+  // var variables = workspace.getAllVariables();
+  // if (variables.length) {
+  //   for (var i = 0; i < variables.length; i++) {
+  //     defvars[i] = Blockly.Solidity.variableDB_.getName(variables[i].name,
+  //         Blockly.Variables.NAME_TYPE);
+  //   }
+  //   Blockly.Solidity.definitions_['variables'] =
+  //       'int ' + defvars.join(', ') + ';';
+  // }
 };
 
 /**

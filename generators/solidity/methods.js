@@ -67,5 +67,5 @@ Blockly.Solidity['contract_method_call'] = function(block) {
     return '';
   }
 
-  return 'this.' + Blockly.Solidity.getVariableName(variable) + '();\n';
+  return Blockly.Solidity.getVariableName(variable) + '();\n';
 };
