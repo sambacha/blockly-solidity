@@ -35,40 +35,42 @@ Blockly.Solidity.addReservedWords(
 
 /**
  * Order of operation ENUMs.
- * https://developer.mozilla.org/en/Solidity/Reference/Operators/Operator_Precedence
+ * https://solidity.readthedocs.io/en/develop/miscellaneous.html#order
+ * TODO: can this be further minimized?
  */
 Blockly.Solidity.ORDER_ATOMIC = 0;           // 0 "" ...
+// TODO: postfix increment/decrement
+// https://stackoverflow.com/questions/7031326/what-is-the-difference-between-prefix-and-postfix-operators#7031409
 Blockly.Solidity.ORDER_NEW = 1.1;            // new
 Blockly.Solidity.ORDER_MEMBER = 1.2;         // . []
-Blockly.Solidity.ORDER_FUNCTION_CALL = 2;    // ()
-Blockly.Solidity.ORDER_INCREMENT = 3;        // ++
-Blockly.Solidity.ORDER_DECREMENT = 3;        // --
-Blockly.Solidity.ORDER_BITWISE_NOT = 4.1;    // ~
-Blockly.Solidity.ORDER_UNARY_PLUS = 4.2;     // +
-Blockly.Solidity.ORDER_UNARY_NEGATION = 4.3; // -
-Blockly.Solidity.ORDER_LOGICAL_NOT = 4.4;    // !
-Blockly.Solidity.ORDER_EXPONENTATION = 4.5   // **
-Blockly.Solidity.ORDER_TYPEOF = 4.6;         // typeof
-Blockly.Solidity.ORDER_VOID = 4.7;           // void
-Blockly.Solidity.ORDER_DELETE = 4.8;         // delete
-Blockly.Solidity.ORDER_DIVISION = 5.1;       // /
-Blockly.Solidity.ORDER_MULTIPLICATION = 5.2; // *
-Blockly.Solidity.ORDER_MODULUS = 5.3;        // %
-Blockly.Solidity.ORDER_SUBTRACTION = 6.1;    // -
-Blockly.Solidity.ORDER_ADDITION = 6.2;       // +
-Blockly.Solidity.ORDER_BITWISE_SHIFT = 7;    // << >> >>>
-Blockly.Solidity.ORDER_RELATIONAL = 8;       // < <= > >=
-Blockly.Solidity.ORDER_IN = 8;               // in
-Blockly.Solidity.ORDER_INSTANCEOF = 8;       // instanceof
-Blockly.Solidity.ORDER_EQUALITY = 9;         // == != === !==
-Blockly.Solidity.ORDER_BITWISE_AND = 10;     // &
-Blockly.Solidity.ORDER_BITWISE_XOR = 11;     // ^
-Blockly.Solidity.ORDER_BITWISE_OR = 12;      // |
-Blockly.Solidity.ORDER_LOGICAL_AND = 13;     // &&
-Blockly.Solidity.ORDER_LOGICAL_OR = 14;      // ||
-Blockly.Solidity.ORDER_CONDITIONAL = 15;     // ?:
-Blockly.Solidity.ORDER_ASSIGNMENT = 16;      // = += -= *= /= %= <<= >>= ...
-Blockly.Solidity.ORDER_COMMA = 17;           // ,
+Blockly.Solidity.ORDER_FUNCTION_CALL = 1.3;  // ()
+// TODO: "Parentheses" ought to be 1.6
+Blockly.Solidity.ORDER_INCREMENT = 2.1;      // ++ (prefix)
+Blockly.Solidity.ORDER_DECREMENT = 2.2;      // -- (prefix)
+Blockly.Solidity.ORDER_UNARY_PLUS = 2.3;     // +
+Blockly.Solidity.ORDER_UNARY_NEGATION = 2.4; // -
+Blockly.Solidity.ORDER_TYPEOF = 2.5;         // typeof
+Blockly.Solidity.ORDER_VOID = 2.6;           // void
+Blockly.Solidity.ORDER_DELETE = 2.7;         // delete
+Blockly.Solidity.ORDER_LOGICAL_NOT = 2.8;    // !
+Blockly.Solidity.ORDER_BITWISE_NOT = 2.9;    // ~
+Blockly.Solidity.ORDER_EXPONENTATION = 3;    // **
+Blockly.Solidity.ORDER_MULTIPLICATION = 4.1; // *
+Blockly.Solidity.ORDER_DIVISION = 4.2;       // /
+Blockly.Solidity.ORDER_MODULUS = 4.3;        // %
+Blockly.Solidity.ORDER_SUBTRACTION = 5.1;    // -
+Blockly.Solidity.ORDER_ADDITION = 5.2;       // +
+Blockly.Solidity.ORDER_BITWISE_SHIFT = 6;    // << >> >>>
+Blockly.Solidity.ORDER_BITWISE_AND = 7;      // &
+Blockly.Solidity.ORDER_BITWISE_XOR = 8;      // ^
+Blockly.Solidity.ORDER_BITWISE_OR = 9;       // |
+Blockly.Solidity.ORDER_RELATIONAL = 10       // < <= > >=
+Blockly.Solidity.ORDER_EQUALITY = 11;        // == != === !==
+Blockly.Solidity.ORDER_LOGICAL_AND = 12;     // &&
+Blockly.Solidity.ORDER_LOGICAL_OR = 13;      // ||
+Blockly.Solidity.ORDER_CONDITIONAL = 14;     // ?:
+Blockly.Solidity.ORDER_ASSIGNMENT = 15;      // = += -= *= /= %= <<= >>= ...
+Blockly.Solidity.ORDER_COMMA = 16;           // ,
 Blockly.Solidity.ORDER_NONE = 99;            // (...)
 
 /**
