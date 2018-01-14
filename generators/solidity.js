@@ -30,7 +30,11 @@ Blockly.Solidity.UNDEFINED_NAME         = "__UNDEFINED__";
  */
 Blockly.Solidity.addReservedWords(
     'Blockly,' +  // In case JS is evaled in the current window.
-    'FIXME'
+    'abstract, after, case, catch, default, final, in, inline, let, match,' +
+    'null, of, relocatable, static, switch, try, type, typeof'
+    // TODO: Fix with reference to:
+    // https://solidity.readthedocs.io/en/develop/miscellaneous.html
+    // http://solidity.readthedocs.io/en/latest/units-and-global-variables.html
 );
 
 /**
@@ -122,17 +126,16 @@ Blockly.Solidity.init = function(workspace) {
     Blockly.Solidity.variableDB_.reset();
   }
 
-
-  // var defvars = [];
-  // var variables = workspace.getAllVariables();
-  // if (variables.length) {
-  //   for (var i = 0; i < variables.length; i++) {
-  //     defvars[i] = Blockly.Solidity.variableDB_.getName(variables[i].name,
-  //         Blockly.Variables.NAME_TYPE);
-  //   }
-  //   Blockly.Solidity.definitions_['variables'] =
-  //       'int ' + defvars.join(', ') + ';';
-  // }
+  var defvars = [];
+  var variables = workspace.getAllVariables();
+  if (variables.length) {
+    for (var i = 0; i < variables.length; i++) {
+      defvars[i] = Blockly.Solidity.variableDB_.getName(variables[i].name,
+          Blockly.Variables.NAME_TYPE);
+    }
+    Blockly.Solidity.definitions_['variables'] =
+        'int ' + defvars.join(', ') + ';';
+  }
 };
 
 /**
@@ -357,7 +360,7 @@ Blockly.Solidity.updateWorkspaceTypes = function(workspace, nameFieldName, value
         default:
       }
     }
-    // FIXME: update the output type
+    // TODO: update the output type
   }
 };
 
