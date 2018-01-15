@@ -46,10 +46,11 @@ I didn't have enough time to test them.
 
 ## Todo
 
-* variables
-* scoped variables
 * compile the generated Solidity code
 * one-button deployment of the compiled contract
+* variable (state) access control
+* add support for all types
+* add support for all operators
 
 ## Example
 
