@@ -56,7 +56,9 @@
     </category>
   </xml>
 
-  <textarea id="textarea" style="width:calc(34% - 10px);height:600px;float:right"></textarea>
+  <textarea id="textarea" style="width:calc(34% - 10px);height:600px;float:right" readonly></textarea>
+
+  <button id="copyTextarea" style="float:right">Copy code</button>
 
   <script>
 
@@ -110,7 +112,7 @@
       }
     }
 
-    // function to be called every time the workspace changes
+    // is called every time the workspace changes
     function myUpdateFunction(event) {
       var code = Blockly.Solidity.blockToCode(contractBlock);
       var topBlocks = workspace.getAllBlocks();
@@ -132,6 +134,14 @@
       document.getElementById('textarea').value = code;
      }
      workspace.addChangeListener(myUpdateFunction);
+
+     // copies the contents of code text area
+     function copyTextArea(event) {
+       document.getElementById('textarea').select();
+       document.execCommand('copy');
+       document.getElementById('copyTextarea').select();
+     }
+     document.getElementById('copyTextarea').addEventListener('click', copyTextArea);
 
   </script>
 
