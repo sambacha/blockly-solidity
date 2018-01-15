@@ -50,6 +50,8 @@
     <block type="contract_method_parameter_get"></block>
     <block type="logic_operation"></block>
     <block type="math_arithmetic"></block>
+    <block type="variables_get"></block>
+    <block type="variables_set"></block>
   </xml>
 
   <button id="varButton" style="float:left">Create variable</button>
@@ -57,6 +59,8 @@
   <textarea id="textarea" style="width:calc(34% - 10px);height:600px;float:right"></textarea>
 
   <script>
+
+    // workspace JSON
     var workspace = Blockly.inject(
       'blocklyDiv',
       {
@@ -74,6 +78,8 @@
         },
       }
     );
+
+    // workspace initialization from JSON variable
     Blockly.Xml.domToWorkspace(
       Blockly.Xml.textToDom(
         '<xml><block type="contract" deletable="false" movable="false"></block></xml>'
@@ -92,6 +98,7 @@
       }
     }
 
+    // function to be called every time the workspace changes
     function myUpdateFunction(event) {
       var code = Blockly.Solidity.blockToCode(contractBlock);
       var topBlocks = workspace.getAllBlocks();
@@ -114,27 +121,22 @@
      }
      workspace.addChangeListener(myUpdateFunction);
 
-
+     // creates variable in Blockly.VariableModel in response to create variable
+     // button click
      function createVariable(event) {
-
-       // results in some error
-       // Blockly.Variables.createVariable(workspace.id, Blockly.Variables.promptName);
-
-       // ought to work but fails in blockly's variables.js due to "this" being undefined in a function
-       // Blockly.Variables.promptName("New variable name:", "", Blockly.getMainWorkspace().createVariable);
 
        // works, but I dislike the forced callback of promptName, might end
        // up moving to a different js file and rewriting the core function
        var varName;
 
-       Blockly.Variables.promptName("New variable name:", "", function (name) {
+       Blockly.Variables.promptName("New variable name:", null, function (name) {
          varName = name;
        })
 
-       Blockly.getMainWorkspace().createVariable(varName);
+       workspace.createVariable(varName);
 
-       // this test proves the above works
-       // console.log(Blockly.getMainWorkspace().getAllVariables());
+       // console log of all variables
+       console.log(Blockly.getMainWorkspace().getAllVariables());
      }
      document.getElementById('varButton').addEventListener('click', createVariable);
 
