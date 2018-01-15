@@ -52,6 +52,8 @@
     <block type="math_arithmetic"></block>
   </xml>
 
+  <button id="varButton" style="float:left">Create variable</button>
+
   <textarea id="textarea" style="width:calc(34% - 10px);height:600px;float:right"></textarea>
 
   <script>
@@ -111,6 +113,23 @@
       document.getElementById('textarea').value = code;
      }
      workspace.addChangeListener(myUpdateFunction);
+
+
+     function createVariable(event) {
+       // var varName = prompt("New variable name:");
+       //
+       // if (varName) {
+       //   Blockly.Variables.createVariable()
+       // }
+
+       // Blockly.Variables.createVariable(workspace.id, Blockly.Variables.promptName);
+
+       var varName = Blockly.Variables.promptName("New variable name:", "", Blockly.getMainWorkspace().createVariable);
+
+       // Blockly.getMainWorkspace().createVariable(varName);
+     }
+     document.getElementById('varButton').addEventListener('click', createVariable);
+
   </script>
 
 </body>
