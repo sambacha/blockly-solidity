@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Helper functions for generating Solidity for blocks.
+ * @author jeanmarc.leroux@google.com (Jean-Marc Le Roux)
+ * @author rekmarks@icloud.com  (Erik Marks)
+ */
 'use strict';
 
 goog.provide('Blockly.Solidity.contract');
@@ -155,7 +160,6 @@ Blockly.Blocks['contract_state'] = {
   init: function() {
     var nameField = new Blockly.FieldTextInput('s');
     this.appendDummyInput()
-        .appendField('let')
         .appendField(new Blockly.FieldDropdown([
             [ "bool", "TYPE_BOOL" ],
             [ "int",  "TYPE_INT" ],
@@ -238,7 +242,6 @@ Blockly.Blocks['contract_method_parameter'] = {
   init: function() {
     var nameField = new Blockly.FieldTextInput('p');
     this.appendDummyInput()
-        .appendField('let')
         .appendField(new Blockly.FieldDropdown([
             [ "bool", "TYPE_BOOL" ],
             [ "int",  "TYPE_INT" ],

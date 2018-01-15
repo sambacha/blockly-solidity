@@ -1,6 +1,7 @@
 /**
  * @fileoverview Helper functions for generating Solidity for blocks.
  * @author jeanmarc.leroux@google.com (Jean-Marc Le Roux)
+ * @author rekmarks@icloud.com  (Erik Marks)
  */
 'use strict';
 
@@ -48,7 +49,7 @@ Blockly.Solidity.ORDER_ATOMIC = 0;           // 0 "" ...
 Blockly.Solidity.ORDER_NEW = 1.1;            // new
 Blockly.Solidity.ORDER_MEMBER = 1.2;         // . []
 Blockly.Solidity.ORDER_FUNCTION_CALL = 1.3;  // ()
-// TODO: "Parentheses" ought to be 1.6
+// TODO: "Parentheses" ought to be 1.X
 Blockly.Solidity.ORDER_INCREMENT = 2.1;      // ++ (prefix)
 Blockly.Solidity.ORDER_DECREMENT = 2.2;      // -- (prefix)
 Blockly.Solidity.ORDER_UNARY_PLUS = 2.3;     // +

@@ -1,6 +1,7 @@
 /**
  * @fileoverview Helper functions for generating Solidity for blocks.
  * @author jeanmarc.leroux@google.com (Jean-Marc Le Roux)
+ * @author rekmarks@icloud.com  (Erik Marks)
  */
 'use strict';
 
@@ -9,7 +10,7 @@ goog.require('Blockly.Solidity');
 Blockly.Solidity['contract_method'] = function(block) {
   var params = Blockly.Solidity.statementToCode(block, 'PARAMS').trim();
   var branch = Blockly.Solidity.statementToCode(block, 'STACK');
-  var code = 'function ' + block.getFieldValue('NAME') + '(' + params + ') {\n' + branch + '}\n';
+  var code = 'function ' + block.getFieldValue('NAME') + '(' + params + ') {\n' + branch + '}\n\n';
 
   return code;
 };
@@ -23,7 +24,7 @@ Blockly.Solidity['contract_ctor'] = function(block) {
 
   var params = Blockly.Solidity.statementToCode(block, 'PARAMS').trim();
   var branch = Blockly.Solidity.statementToCode(block, 'STACK');
-  var code = 'function ' + parent.getFieldValue('NAME') + '(' + params + ') {\n' + branch + '}\n';
+  var code = 'function ' + parent.getFieldValue('NAME') + '(' + params + ') {\n' + branch + '}\n\n';
 
   return code;
 };
