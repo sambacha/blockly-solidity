@@ -116,17 +116,25 @@
 
 
      function createVariable(event) {
-       // var varName = prompt("New variable name:");
-       //
-       // if (varName) {
-       //   Blockly.Variables.createVariable()
-       // }
 
+       // results in some error
        // Blockly.Variables.createVariable(workspace.id, Blockly.Variables.promptName);
 
-       var varName = Blockly.Variables.promptName("New variable name:", "", Blockly.getMainWorkspace().createVariable);
+       // ought to work but fails in blockly's variables.js due to "this" being undefined in a function
+       // Blockly.Variables.promptName("New variable name:", "", Blockly.getMainWorkspace().createVariable);
 
-       // Blockly.getMainWorkspace().createVariable(varName);
+       // works, but I dislike the forced callback of promptName, might end
+       // up moving to a different js file and rewriting the core function
+       var varName;
+
+       Blockly.Variables.promptName("New variable name:", "", function (name) {
+         varName = name;
+       })
+
+       Blockly.getMainWorkspace().createVariable(varName);
+
+       // this test proves the above works
+       // console.log(Blockly.getMainWorkspace().getAllVariables());
      }
      document.getElementById('varButton').addEventListener('click', createVariable);
 
