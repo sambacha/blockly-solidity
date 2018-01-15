@@ -30,43 +30,55 @@
 <body>
   <div id="blocklyDiv" style="height: 480px; width: 100%;"></div>
 
-  <xml id="toolbox" style="display: none">
-    <block type="contract_state"></block>
-    <block type="contract_state_get"></block>
-    <block type="contract_state_set"></block>
-    <block type="contract_method"></block>
-    <block type="contract_method_parameter"></block>
-    <block type="contract_method_parameter_get"></block>
-    <block type="contract_ctor"></block>
-    <block type="contract_method_call"></block>
-    <block type="math_number"></block>
-    <block type="math_arithmetic"></block>
-    <block type="logic_boolean"></block>
-    <block type="logic_compare"></block>
-    <block type="controls_ifelse"></block>
-    <block type="controls_if"></block>
-    <block type="contract_method"></block>
-    <block type="contract_method_parameter"></block>
-    <block type="contract_method_parameter_get"></block>
-    <block type="logic_operation"></block>
-    <block type="math_arithmetic"></block>
-    <block type="variables_get"></block>
-    <block type="variables_set"></block>
+  <!--
+    toolbox xml, build using:
+    https://blockly-demo.appspot.com/static/demos/blockfactory/index.html
+  -->
+  <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none">
+    <category name="Contracts" colour="#5ba580">
+      <block type="contract_state"></block>
+      <block type="contract_state_get"></block>
+      <block type="contract_state_set"></block>
+      <block type="contract_ctor"></block>
+      <block type="contract_method"></block>
+      <block type="contract_method_parameter"></block>
+      <block type="contract_method_parameter_get"></block>
+      <block type="contract_method_call"></block>
+    </category>
+    <category name="Logic &amp; Math" colour="#5C81A6">
+      <block type="logic_boolean"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="controls_ifelse"></block>
+      <block type="controls_if"></block>
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+    </category>
   </xml>
-
-  <button id="varButton" style="float:left">Create variable</button>
 
   <textarea id="textarea" style="width:calc(34% - 10px);height:600px;float:right"></textarea>
 
   <script>
 
-    // workspace JSON
+    // workspace & toolbox JSON
     var workspace = Blockly.inject(
       'blocklyDiv',
       {
         media: '../blockly/media/',
         toolbox: document.getElementById('toolbox'),
         scrollbars: true,
+        collapse : true,
+        comments : true,
+        disable : true,
+        maxBlocks : Infinity,
+        trashcan : true,
+        horizontalLayout : false,
+        toolboxPosition : 'start',
+        css : true,
+        media : 'https://blockly-demo.appspot.com/static/media/',
+        rtl : false,
+        sounds : true,
+        oneBasedIndex : true,
         zoom: {
           controls: true
         },
@@ -120,25 +132,6 @@
       document.getElementById('textarea').value = code;
      }
      workspace.addChangeListener(myUpdateFunction);
-
-     // creates variable in Blockly.VariableModel in response to create variable
-     // button click
-     function createVariable(event) {
-
-       // works, but I dislike the forced callback of promptName, might end
-       // up moving to a different js file and rewriting the core function
-       var varName;
-
-       Blockly.Variables.promptName("New variable name:", null, function (name) {
-         varName = name;
-       })
-
-       workspace.createVariable(varName);
-
-       // console log of all variables
-       console.log(Blockly.getMainWorkspace().getAllVariables());
-     }
-     document.getElementById('varButton').addEventListener('click', createVariable);
 
   </script>
 
