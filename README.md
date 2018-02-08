@@ -8,13 +8,14 @@ used to create smart contracts for the [Ethereum](https://www.ethereum.org/) blo
 
 ## Motivations
 
+Courtesy @promethe42
+
 I see a lot of articles here and there stating that the blockchain makes it possible to build decentralized
 communities. Those articles are completely oblivious to the fact that even if smart contracts execution is indeed
 enforced by a decentralized blockchain network, those contracts are still written by actual developers.
 
 Taking into account that "code is law", the ability to actually write smart contracts becomes a new logical SPOF.
-No true decentralized community will ever exist as long as the production of its code (its "laws") is not accessible
-to just any of its members.
+No true decentralized community will ever exist as long as the production of its code (its "laws") is not accessible to just any of its members.
 
 Thus, the need to make it easier to create, distribute and run smart contracts with as less technical skills as
 possible. Blockly being an initiative to introduce programming to children, it felt like the right way to start
@@ -25,7 +26,7 @@ experimenting.
 * `mkdir www && cd www`
 * `git clone https://github.com/google/blockly.git`
 * `git clone https://github.com/promethe42/blockly-solidity.git`
-* `python -m SimpleHTTPServer` or `or python3 -m http.server`
+* `python -m SimpleHTTPServer` or `python3 -m http.server`
 
 Then open http://localhost in your favorite web browser.
 
@@ -46,8 +47,10 @@ I didn't have enough time to test them.
 
 ## Todo
 
-* compile the generated Solidity code
-* one-button deployment of the compiled contract
+### Next up
+* minimum smart contract using blocks at a higher-than-syntactic level of abstraction
+
+### Later
 * variable (state) access control
 * add support for all types
 * add support for all operators
