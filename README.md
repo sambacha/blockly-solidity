@@ -28,7 +28,7 @@ experimenting.
 * `git clone https://github.com/rekmarks/blockly-solidity.git`
 * `python -m SimpleHTTPServer` or `python3 -m http.server`
 
-Then open http://localhost or http://0.0.0.0:8000 in your favorite web browser.
+Then open http://localhost or http://0.0.0.0:8000 in your web browser and click `blockly-solidity`.
 
 ## Features
 
