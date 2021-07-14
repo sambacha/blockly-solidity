@@ -22,20 +22,14 @@ Blockly.Solidity['math_arithmetic'] = function(block) {
     'MINUS': [' - ', Blockly.Solidity.ORDER_SUBTRACTION],
     'MULTIPLY': [' * ', Blockly.Solidity.ORDER_MULTIPLICATION],
     'DIVIDE': [' / ', Blockly.Solidity.ORDER_DIVISION],
-    'POWER': [null, Blockly.Solidity.ORDER_COMMA]  // Handle power separately.
+    'POWER': [' ** ', Blockly.Solidity.ORDER_EXPONENTATION]
   };
   var tuple = OPERATORS[block.getFieldValue('OP')];
   var operator = tuple[0];
   var order = tuple[1];
   var argument0 = Blockly.Solidity.valueToCode(block, 'A', order) || '0';
   var argument1 = Blockly.Solidity.valueToCode(block, 'B', order) || '0';
-  var code;
-  // Power in Solidity requires a special case since it has no operator.
-  if (!operator) {
-    code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
-    return [code, Blockly.Solidity.ORDER_FUNCTION_CALL];
-  }
-  code = argument0 + operator + argument1;
+  var code = argument0 + operator + argument1;
   return [code, order];
 };
 

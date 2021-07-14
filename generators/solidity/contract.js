@@ -1,6 +1,7 @@
 /**
  * @fileoverview Helper functions for generating Solidity for blocks.
  * @author jeanmarc.leroux@google.com (Jean-Marc Le Roux)
+ * @author rekmarks@icloud.com  (Erik Marks)
  */
 'use strict';
 
@@ -8,12 +9,20 @@ goog.require('Blockly.Solidity');
 
 Blockly.Solidity['contract'] = function(block) {
   var states = Blockly.Solidity.statementToCode(block, 'STATES');
+  if (states.length > 0) {states += '\n'};
   var ctor = Blockly.Solidity.statementToCode(block, 'CTOR');
   var methods = Blockly.Solidity.statementToCode(block, 'METHODS');
+
+  // trim newline before ultimate closing curly brace
+  if (methods.length > 0) {
+    methods = methods.slice(0, -2);
+  } else if (ctor.length > 0) {
+    ctor = ctor.slice(0, -2);
+  }
+
   var code = 'pragma solidity ^0.4.2;\n\n'
-    + 'contract ' + block.getFieldValue('NAME') + ' {\n'
+    + 'contract ' + block.getFieldValue('NAME') + ' {\n\n'
     + states
-    + "  function () { throw; }\n"
     + ctor
     + methods
     + '}\n';
@@ -51,7 +60,7 @@ Blockly.Solidity['contract_state_get'] = function(block) {
     return '';
   }
 
-  return ['this.' + Blockly.Solidity.getVariableName(variable), Blockly.Solidity.ORDER_ATOMIC];
+  return [Blockly.Solidity.getVariableName(variable), Blockly.Solidity.ORDER_ATOMIC];
 };
 
 Blockly.Solidity['contract_state_set'] = function(block) {
@@ -65,5 +74,5 @@ Blockly.Solidity['contract_state_set'] = function(block) {
     return '';
   }
 
-  return 'this.' + Blockly.Solidity.getVariableName(variable) + ' = ' + argument0 + ';\n';
+  return Blockly.Solidity.getVariableName(variable) + ' = ' + argument0 + ';\n';
 };
